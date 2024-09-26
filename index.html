@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Focus Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Container to center content */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        p, div, table {
+            margin: 20px 0;
+            font-size: 16px;
+        }
+
+        input, button, a {
+            padding: 10px 15px;
+            margin: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Focusable element hover effect */
+        input:hover, button:hover, a:hover {
+            border-color: #3498db;
+            background-color: #eaf4fc;
+        }
+
+        /* Style for focus state */
+        input:focus, button:focus, a:focus {
+            outline: none;
+            border-color: #3498db;
+            background-color: #f1f9ff;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+        }
+
+        /* Styling for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* Hover and focus styles for table cells */
+        td:hover, td:focus {
+            background-color: #f7fbff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Custom Focus Order with Enhanced CSS</h1>
+
+        <nav>
+            <a href="index.html">Tab order</a>
+            <a href="focus.html">Focus visible</a>
+        </nav>
+
+
+        <p>This is paragraph 1</p>
+        <div>This is div 1</div>
+        
+        <input type="text" placeholder="Input 1" />
+        <input type="text" placeholder="Input 2" />
+        <button>Button 1</button>
+        <a href="#">Link 1</a>
+
+        <table>
+            <tr>
+                <td>Cell 1</td>
+                <td>Cell 2</td>
+            </tr>
+            <tr>
+                <td>Cell 3</td>
+                <td>Cell 4</td>
+            </tr>
+        </table>
+
+        <button>Button 2</button>
+        <a href="#">Link 2</a>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Tab') {
+                event.preventDefault();  // Prevent the default tab order
+
+                // Custom focus order logic
+                const elements = [
+                    document.querySelector('button:nth-of-type(2)'), // Focus Button 2 first
+                    document.querySelector('input:nth-of-type(1)'),   // Then Input 1
+                    document.querySelector('a:nth-of-type(1)'),       // Then Link 1
+                    document.querySelector('button:nth-of-type(1)'),  // Then Button 1
+                    document.querySelector('input:nth-of-type(2)'),   // Then Input 2
+                    document.querySelector('a:nth-of-type(2)')        // Finally Link 2
+                ];
+
+                let currentIndex = elements.indexOf(document.activeElement);
+                currentIndex = (currentIndex + 1) % elements.length; // Move to the next element
+                elements[currentIndex].focus();  // Set focus to the next element
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 2 - Custom Focus Styles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        input, button, a {
+            padding: 10px 15px;
+            margin: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Full focus visibility for these elements */
+        input:focus, button:focus, a:focus {
+            outline: none;
+            border-color: #3498db;
+            background-color: #f1f9ff;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+        }
+
+        /* Reduced focus visibility for these elements */
+        .low-focus:focus {
+            outline: none;
+            border-color: #a28181;
+            background-color: #f9f9f9;
+            box-shadow: none;  /* No shadow for less visible focus */
+        }
+
+        /* Button to navigate back */
+        .navigation a {
+            display: inline-block;
+            padding: 12px;
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .navigation a:hover {
+            background-color:    #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Page 2 - Custom Focus Styles</h1>
+        <nav>
+            <a href="index.html">Tab order</a>
+            <a href="focus.html">Focus visible</a>
+        </nav>
+
+        <p>This page has different content and focus styles.</p>
+        
+        <input type="text" class="low-focus" placeholder="Low Focus Input 1" />
+        <input type="text" placeholder="Input 2" />
+        <button class="low-focus">Low Focus Button</button>
+        <a href="#">Regular Focus Link</a>
+        <a href="#" class="low-focus">Low Focus Link</a>
+
+        <div class="navigation">
+            <a href="page1.html">Back to Page 1</a>
+        </div>
+    </div>
+
+</body>
+</html>
